@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Česnekomat – Nákup</title>
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <img src="favicon/web-app-manifest-512x512.png" alt="Logo Česnekomat" class="logo" />
+    <span class="brand-name">Česnekomat</span>
+  </header>
+
+  <main class="screen">
+    <section class="panel buy" aria-label="Nákup svazků česneku">
+      <h1 class="title">Nákup</h1>
+      <p class="muted">Vyberte množství a zvolte způsob platby</p>
+
+      <div class="buy-meta" aria-label="Informace o ceně a skladu">
+        <span class="badge">Sklad k dispozici: <strong>42 ks</strong></span>
+        <span class="badge">Cena: <strong>120 Kč</strong> / ks</span>
+      </div>
+
+      <section class="qty" aria-label="Výběr množství">
+        <h2 class="sr-only">Množství</h2>
+
+        <div class="qty-box">
+          <button class="qty-btn" type="button" disabled aria-label="Snížit množství">−</button>
+
+          <div class="qty-value" aria-label="Zvolené množství">
+            <div class="qty-number">3</div>
+            <div class="qty-unit muted">ks</div>
+          </div>
+
+          <button class="qty-btn" type="button" disabled aria-label="Zvýšit množství">+</button>
+        </div>
+
+        <dl class="summary" aria-label="Souhrn ceny">
+          <div class="summary-row">
+            <dt>Cena za 1 ks</dt>
+            <dd><strong>120 Kč</strong></dd>
+          </div>
+          <div class="summary-row">
+            <dt>Celkem</dt>
+            <dd><strong>360 Kč</strong></dd>
+          </div>
+        </dl>
+      </section>
+
+      <nav class="pay" aria-label="Způsob platby">
+        <a class="pay-btn" href="checkout-cash.html" aria-label="Zaplatit hotově">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+              d="M112 112c0 35.3-28.7 64-64 64l0 160c35.3 0 64 28.7 64 64l288 0c0-35.3 28.7-64 64-64l0-160c-35.3 0-64-28.7-64-64l-288 0zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128zm256 16a112 112 0 1 1 0 224 112 112 0 1 1 0-224zm-16 44c-11 0-20 9-20 20 0 9.7 6.9 17.7 16 19.6l0 48.4-4 0c-11 0-20 9-20 20s9 20 20 20l48 0c11 0 20-9 20-20s-9-20-20-20l-4 0 0-68c0-11-9-20-20-20l-16 0z" />
+          </svg> </svg>
+          <span>Zaplatit hotově</span>
+        </a>
+
+        <a class="pay-btn" href="checkout-card.html" aria-label="Zaplatit kartou">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+              d="M448 112c8.8 0 16 7.2 16 16l0 32-416 0 0-32c0-8.8 7.2-16 16-16l384 0zm16 112l0 160c0 8.8-7.2 16-16 16L64 400c-8.8 0-16-7.2-16-16l0-160 416 0zM64 64C28.7 64 0 92.7 0 128L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64L64 64zM80 344c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24zm144 0c0 13.3 10.7 24 24 24l64 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-64 0c-13.3 0-24 10.7-24 24z" />
+          </svg> </svg>
+          <span>Zaplatit kartou</span>
+        </a>
+      </nav>
+
+      <nav class="buy-actions" aria-label="Další akce">
+        <a class="action action--secondary" href="main.html">Zpět</a>
+      </nav>
+
+      <p class="hint">Platbu můžete provést hotově (mince/bankovky) nebo kartou (bezkontaktně).</p>
+    </section>
+  </main>
+
+  <footer>24/7 čerstvý český česnek</footer>
+</body>
+</html>

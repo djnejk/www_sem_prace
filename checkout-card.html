@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Česnekomat – Platba kartou</title>
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <img src="favicon/web-app-manifest-512x512.png" alt="Logo Česnekomat" class="logo" />
+    <span class="brand-name">Česnekomat</span>
+  </header>
+
+  <main class="screen">
+    <section class="panel card-pay" aria-label="Platba kartou">
+      <h1 class="title">Platba kartou</h1>
+      <p class="muted">Přiložte nebo vložte platební kartu k terminálu.</p>
+
+      <div class="device" aria-label="Stav platebního terminálu">
+        <span class="badge">Platební terminál:</span>
+        <span class="device-status device-status--ok">READY</span>
+      </div>
+
+      <dl class="summary" aria-label="Souhrn platby">
+        <div class="summary-row"><dt>Částka k zaplacení</dt><dd><strong>360 Kč</strong></dd></div>
+      </dl>
+
+      <nav class="card-actions" aria-label="Akce platby">
+        <a class="action action--secondary" href="buy.html">Zrušit platbu</a>
+      </nav>
+
+      <p class="hint">Ukázka přesměrování: <a href="success.html">Zaplaceno</a></p>
+    </section>
+  </main>
+
+  <footer>24/7 čerstvý český česnek</footer>
+</body>
+</html>

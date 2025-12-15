@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Česnekomat – Vyzvednutí rezervace</title>
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <img src="favicon/web-app-manifest-512x512.png" alt="Logo Česnekomat" class="logo" />
+    <span class="brand-name">Česnekomat</span>
+  </header>
+
+  <main class="screen">
+    <section class="panel pickup" aria-label="Vyzvednutí rezervace">
+      <h1 class="title">Vyzvednutí rezervace</h1>
+      <p class="muted">Zadejte 6místný PIN kód</p>
+
+      <div class="pin" aria-label="PIN kód (6 číslic)">
+        <span class="pin__box" aria-hidden="true"></span>
+        <span class="pin__box" aria-hidden="true"></span>
+        <span class="pin__box" aria-hidden="true"></span>
+        <span class="pin__box" aria-hidden="true"></span>
+        <span class="pin__box" aria-hidden="true"></span>
+        <span class="pin__box" aria-hidden="true"></span>
+      </div>
+
+      <div class="keypad" role="group" aria-label="Numerická klávesnice">
+        <button class="key" type="button" disabled>1</button>
+        <button class="key" type="button" disabled>2</button>
+        <button class="key" type="button" disabled>3</button>
+        <button class="key" type="button" disabled>4</button>
+        <button class="key" type="button" disabled>5</button>
+        <button class="key" type="button" disabled>6</button>
+        <button class="key" type="button" disabled>7</button>
+        <button class="key" type="button" disabled>8</button>
+        <button class="key" type="button" disabled>9</button>
+        <button class="key key--ghost" type="button" disabled aria-label="Smazat">C</button>
+        <button class="key" type="button" disabled>0</button>
+        <button class="key key--ghost" type="button" disabled aria-label="Backspace">⌫</button>
+      </div>
+
+      <nav class="pickup-actions" aria-label="Akce">
+        <a class="action action--secondary" href="main.html">Zpět</a>
+        <a class="action" href="buy.html">Potvrdit</a>
+      </nav>
+
+      <p class="hint">PIN najdete v potvrzení rezervace (SMS / e-mail).</p>
+    </section>
+  </main>
+
+  <footer>24/7 čerstvý český česnek</footer>
+</body>
+</html>

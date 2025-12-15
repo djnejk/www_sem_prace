@@ -1,0 +1,591 @@
+/* =========================================================
+   ČESNEKOMAT – styles.css (společné pro všechny layouty)
+   ---------------------------------------------------------
+   Tento soubor obsahuje kompletní styly pro celý frontend
+   kioskové aplikace Česnekomat.
+   Používá se na všech stránkách (standby, main, pickup, buy…)
+   ========================================================= */
+
+
+/* =========================================================
+   THEME / PROMĚNNÉ
+   ---------------------------------------------------------
+   CSS proměnné definují barevné schéma a základní vizuální
+   konstanty aplikace.
+   ========================================================= */
+:root{
+  --bg:#ffffff;                 /* barva pozadí celé aplikace */
+  --fg:#0b0b0b;                 /* hlavní barva textu a ikon */
+  --muted:#6b6b6b;              /* méně důležitý (sekundární) text */
+  --radius:18px;                /* jednotné zaoblení rohů */
+  --border:#dcdcdc;             /* barva přerušovaného ohraničení */
+  --outline:4px solid #000;     /* zvýraznění focusu (přístupnost) */
+}
+
+
+/* =========================================================
+   RESET + TYPOGRAFIE
+   ---------------------------------------------------------
+   Zajišťuje konzistentní chování napříč prohlížeči.
+   ========================================================= */
+*{
+  box-sizing:border-box;        /* padding + border se započítává do rozměru */
+}
+
+html,
+body{
+  height:100%;                  /* nutné pro centrování obsahu na výšku */
+}
+
+body{
+  margin:0;                     /* odstranění výchozích okrajů */
+  background:var(--bg);         /* aplikace pozadí */
+  color:var(--fg);              /* základní barva textu */
+
+  /* systémové písmo – ideální pro kiosky a terminály */
+  font:18px/1.45 system-ui,
+       -apple-system,
+       "Segoe UI",
+       Roboto,
+       "Helvetica Neue",
+       Arial;
+
+  -webkit-font-smoothing:antialiased; /* jemnější vykreslení písma */
+  text-rendering:optimizeLegibility;  /* lepší čitelnost textu */
+}
+
+
+/* =========================================================
+   SPOLEČNÉ POZADÍ OBRAZOVKY
+   ---------------------------------------------------------
+   Používá se na všech stránkách.
+   Jemné radiální gradienty dodávají hloubku.
+   ========================================================= */
+.screen,
+main{
+  min-height:100dvh;            /* plná výška obrazovky */
+  display:grid;
+  place-items:center;           /* horizontální i vertikální vystředění */
+  padding:28px;
+  text-align:center;
+
+  /* dekorativní pozadí */
+  background-image:
+    radial-gradient(circle at 50% -20%, rgba(0,0,0,.04), transparent 46%),
+    radial-gradient(circle at 20% 120%, rgba(0,0,0,.03), transparent 40%);
+}
+
+
+/* =========================================================
+   HEADER + FOOTER
+   ---------------------------------------------------------
+   Fixní prvky viditelné na všech obrazovkách.
+   ========================================================= */
+.app-header{
+  position:fixed;               /* zůstává vždy nahoře */
+  top:20px;
+  left:20px;
+  display:flex;
+  align-items:center;
+  gap:12px;                     /* mezera mezi logem a textem */
+  z-index:2;                    /* nad obsahem */
+}
+
+.logo{
+  width:40px;
+  height:40px;
+  object-fit:contain;           /* zachování poměru stran loga */
+}
+
+.brand-name{
+  font-weight:800;
+  letter-spacing:.4px;
+  font-size:20px;
+}
+
+footer{
+  position:fixed;               /* zůstává vždy dole */
+  bottom:20px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:var(--muted);           /* méně výrazný text */
+  font-size:14px;
+  z-index:2;
+}
+
+
+/* =========================================================
+   STANDBY – KLIKACÍ OVERLAY
+   ---------------------------------------------------------
+   Neviditelný odkaz přes celou obrazovku.
+   Simuluje dotyk kioskové obrazovky.
+   ========================================================= */
+.screen-link{
+  position:fixed;
+  inset:0;                      /* top/right/bottom/left = 0 */
+  z-index:10;                   /* nejvyšší vrstva */
+  text-decoration:none;
+  color:inherit;
+}
+
+.screen-link:focus-visible{
+  outline:var(--outline);       /* viditelný focus pro klávesnici */
+  outline-offset:-6px;
+}
+
+
+/* =========================================================
+   PANEL / BOX
+   ---------------------------------------------------------
+   Základní vizuální kontejner obsahu (karta).
+   ========================================================= */
+.panel,
+.tap{
+  border:2px dashed var(--border); /* přerušované ohraničení */
+  border-radius:var(--radius);     /* zaoblení rohů */
+  padding:28px 32px;
+  background:#fff;
+}
+
+/* Standby box není klikací – klik řeší overlay */
+.tap{
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   TYPOGRAFIE
+   ========================================================= */
+h1{
+  margin:0;                     /* odstranění výchozí mezery */
+}
+
+.title{
+  margin:0;
+  font-size:40px;               /* hlavní nadpis */
+  font-weight:900;
+  letter-spacing:.3px;
+}
+
+.muted{
+  margin:8px 0 0;
+  color:var(--muted);           /* sekundární text */
+}
+
+.hint{
+  margin:20px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+
+/* =========================================================
+   ICONS
+   ---------------------------------------------------------
+   SVG ikony přebírají barvu textu rodiče.
+   ========================================================= */
+.icon{
+  width:28px;
+  height:28px;
+  fill:currentColor;            /* barva dle textu */
+}
+
+
+/* =========================================================
+   TLAČÍTKA JAKO ODKAZY
+   ---------------------------------------------------------
+   Slouží pro navigaci mezi obrazovkami.
+   ========================================================= */
+.actions{
+  margin:22px 0 0;
+  display:grid;
+  grid-template-columns:1fr 1fr; /* dvě tlačítka vedle sebe */
+  gap:16px;
+}
+
+.action{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+
+  padding:18px 16px;
+  min-height:72px;
+
+  border-radius:var(--radius);
+  border:2px solid var(--fg);
+  background:#fff;
+  color:var(--fg);
+  text-decoration:none;
+  font-weight:800;
+
+  -webkit-tap-highlight-color:transparent; /* vypnutí modrého bliknutí */
+}
+
+.action:hover{
+  background:rgba(0,0,0,.03);   /* jemná odezva */
+}
+
+.action:active{
+  transform:translateY(2px);    /* efekt stisku */
+}
+
+.action:focus-visible{
+  outline:var(--outline);
+  outline-offset:6px;
+}
+
+.action--secondary{
+  background:#fff;              /* sekundární varianta */
+  border:2px solid var(--fg);
+}
+
+
+/* =========================================================
+   BADGE / ŠTÍTKY
+   ========================================================= */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;          /* pill tvar */
+  border:2px dashed var(--border);
+  background:#fff;
+  color:var(--fg);
+  font-size:14px;
+}
+
+
+/* =========================================================
+   SR-ONLY (přístupnost)
+   ---------------------------------------------------------
+   Skrytý text pouze pro čtečky obrazovky.
+   ========================================================= */
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+
+/* =========================================================
+   SUMMARY (dl)
+   ---------------------------------------------------------
+   Přehled cen (definiční seznam).
+   ========================================================= */
+.summary{
+  margin:16px auto 0;
+  width:min(520px, 100%);
+  display:grid;
+  gap:10px;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:10px 12px;
+  border:2px dashed var(--border);
+  border-radius:14px;
+  background:#fff;
+}
+
+.summary dt{
+  color:var(--muted);
+}
+
+.summary dd{
+  margin:0;
+}
+
+
+/* =========================================================
+   PICKUP – PIN + KLÁVESNICE
+   ========================================================= */
+.pickup{
+  width:min(780px, 100%);
+}
+
+.pin{
+  margin:18px 0 18px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+.pin__box{
+  width:44px;
+  height:54px;
+  border-radius:12px;
+  border:2px solid var(--fg);
+  background:#fff;
+}
+
+.keypad{
+  margin:10px auto 0;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+  width:min(420px, 100%);
+}
+
+.key{
+  appearance:none;
+  border:2px solid var(--fg);
+  background:#fff;
+  color:var(--fg);
+  border-radius:var(--radius);
+  padding:18px 0;
+  font-weight:900;
+  font-size:22px;
+  min-height:68px;
+  cursor:default;
+}
+
+.key--ghost{
+  background:rgba(0,0,0,.03);   /* pomocné klávesy */
+}
+
+.pickup-actions{
+  margin:18px 0 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+
+/* =========================================================
+   BUY – MNOŽSTVÍ + PLATBY
+   ========================================================= */
+.buy{
+  width:min(820px, 100%);
+}
+
+.buy-meta{
+  margin:18px 0 8px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.qty{
+  margin-top:14px;
+}
+
+.qty-box{
+  margin:12px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  width:min(420px, 100%);
+}
+
+.qty-btn{
+  appearance:none;
+  border:2px solid var(--fg);
+  background:#fff;
+  color:var(--fg);
+  border-radius:var(--radius);
+  width:74px;
+  height:74px;
+  font-size:34px;
+  font-weight:900;
+  cursor:default;
+}
+
+.qty-value{
+  min-width:140px;
+  border:2px dashed var(--border);
+  border-radius:var(--radius);
+  background:#fff;
+  padding:14px 16px;
+}
+
+.qty-number{
+  font-size:40px;
+  font-weight:900;
+  line-height:1;
+}
+
+.qty-unit{
+  margin-top:6px;
+  font-size:14px;
+}
+
+.pay{
+  margin:18px 0 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.pay-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+
+  padding:18px 16px;
+  min-height:78px;
+
+  border-radius:var(--radius);
+  border:2px solid var(--fg);
+  background:#fff;
+  color:var(--fg);
+  text-decoration:none;
+  font-weight:900;
+
+  -webkit-tap-highlight-color:transparent;
+}
+
+.pay-btn:hover{
+  background:rgba(0,0,0,.03);
+}
+
+.pay-btn:active{
+  transform:translateY(2px);
+}
+
+.pay-btn:focus-visible{
+  outline:var(--outline);
+  outline-offset:6px;
+}
+
+.buy-actions{
+  margin:14px 0 0;
+  display:flex;
+  justify-content:center;
+}
+
+
+/* =========================================================
+   CHECKOUT – STAV ZAŘÍZENÍ
+   ========================================================= */
+.cash{
+  width:min(820px, 100%);
+}
+
+.card-pay{
+  width:min(760px, 100%);
+}
+
+.device{
+  margin:18px 0 6px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.device-status{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  border:2px solid var(--fg);
+  background:#fff;
+  font-weight:900;
+  font-size:14px;
+  letter-spacing:.6px;
+}
+
+.device-status--ok{
+  background:rgba(0,0,0,.03);
+}
+
+.cash-actions,
+.card-actions{
+  margin:14px 0 0;
+  display:flex;
+  justify-content:center;
+}
+
+
+/* =========================================================
+   SUCCESS – HODNOCENÍ (statické)
+   ========================================================= */
+.success{
+  width:min(760px, 100%);
+}
+
+.smileys{
+  margin:18px 0 0;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.smileys button{
+  appearance:none;
+  border:2px solid var(--fg);
+  background:#fff;
+  border-radius:var(--radius);
+  width:64px;
+  height:64px;
+  font-size:30px;
+  cursor:default;
+}
+
+
+/* =========================================================
+   RESPONZIVITA (min. 3 breakpointy)
+   ---------------------------------------------------------
+   Responzivita je řešena mobile-friendly přístupem:
+   - výchozí styly = desktop / kiosk / velká obrazovka
+   - media queries postupně upravují layout pro menší šířky
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   BREAKPOINT 1 – TABLET / MENŠÍ DISPLEJE
+   max-width: 720px
+   ---------------------------------------------------------
+   Používá se pro:
+   - tablety
+   - menší kioskové displeje
+   - telefony na šířku
+   --------------------------------------------------------- */
+@media (max-width:720px){
+
+  /* Zmenšení hlavního nadpisu, aby se vešel na menší šířku */
+  .title{
+    font-size:34px;
+  }
+
+  /* Akční tlačítka pod sebe místo vedle sebe
+     (lepší čitelnost a ovládání dotykem) */
+  .actions{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   BREAKPOINT 2 – MOBILNÍ ZAŘÍZENÍ
+   max-width: 420px
+   ---------------------------------------------------------
+   Používá se pro:
+   - menší mobilní telefony
+   - velmi úzké displeje
+   --------------------------------------------------------- */
+@media (max-width:420px){
+
+  /* Zmenšení vnitřních okrajů panelů,
+     aby obsah nepůsobil stísněně */
+  .panel,
+  .tap{
+    padding:22px 20px;
+  }
+}
