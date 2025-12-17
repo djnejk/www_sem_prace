@@ -76,8 +76,3 @@ Layout je navržen pro kiosk/desktop, tablet i mobil:
 
 * Jiří Januš (@djnejk)
 * © 2025 DjDevs.eu
-
-
-
-
-Chceš README spíš **stručnější (1 obrazovka textu)**, nebo naopak doplnit i sekci **„Požadavky ze zadání a jak jsou splněné“** (aby to bylo přímo obhajitelné)?
